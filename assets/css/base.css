@@ -1,0 +1,200 @@
+/* Estilos compartilhados entre index.html e projetos.html */
+
+/* ===== Variáveis ===== */
+
+:root {
+  --ink:#050505;
+  --ink2:#110b0c;
+  --paper:#0a0707;
+  --line:rgba(255,255,255,.14);
+  --text:#f3eeee;
+  --muted:#ab9e9e;
+  --signal:#ff2d3d;
+  --blue:#7a0b16;
+  --d:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --b:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+
+/* ===== Reset e elementos básicos ===== */
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:72px;
+}
+
+body {
+  font:400 1.0625rem/1.65 var(--b);
+  color:var(--text);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+
+a { color:inherit; }
+
+:focus-visible {
+  outline:3px solid var(--signal);
+  outline-offset:3px;
+}
+
+/* ===== Layout e utilitários ===== */
+
+.wrap {
+  width:min(1120px,100% - 2.5rem);
+  margin-inline:auto;
+}
+
+.kicker {
+  font:700 .85rem var(--mono);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--signal);
+  margin-bottom:.8rem;
+}
+
+[data-opt]:not([href]),[data-opt][href=""] { display:none; }
+
+.js .rev {
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .6s,transform .6s;
+}
+
+.js .rev.on {
+  opacity:1;
+  transform:none;
+}
+
+/* ===== Botões ===== */
+
+.btn {
+  display:inline-block;
+  padding:.85rem 1.5rem;
+  border-radius:4px;
+  text-decoration:none;
+  font-weight:600;
+  background:var(--signal);
+  color:#fff;
+  border:1px solid var(--signal);
+  transition:transform .2s,background .2s,box-shadow .2s;
+}
+
+.btn:hover {
+  transform:translateY(-2px);
+  background:#ff5461;
+  box-shadow:0 8px 20px rgba(255,45,61,.35);
+}
+
+.btn.ghost {
+  background:transparent;
+  border-color:rgba(255,255,255,.4);
+}
+
+.btn.ghost:hover {
+  background:rgba(255,255,255,.08);
+  box-shadow:none;
+}
+
+.btn.sm {
+  padding:.5rem 1rem;
+  font-size:.95rem;
+}
+
+/* ===== Cabeçalho e navegação ===== */
+
+header {
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:rgba(5,5,5,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+header .wrap {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:64px;
+  gap:1rem;
+}
+
+.logo {
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  text-decoration:none;
+  font:800 1.05rem var(--d);
+}
+
+.logo span {
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  background:var(--signal);
+  border-radius:4px;
+  font-weight:900;
+}
+
+nav {
+  display:flex;
+  align-items:center;
+  gap:1.4rem;
+}
+
+nav a:not(.btn) {
+  text-decoration:none;
+  color:#bfb2b2;
+  font-size:.95rem;
+  transition:color .2s;
+}
+
+nav a:not(.btn):hover { color:#fff; }
+
+/* ===== Etiquetas ===== */
+
+.chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem;
+}
+
+.chips span {
+  padding:.2rem .8rem;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;
+  font-size:.92rem;
+}
+
+/* ===== Rodapé ===== */
+
+footer {
+  background:#000;
+  color:#8a7d7d;
+  padding:1.6rem 0;
+  font-size:.92rem;
+}
+
+/* ===== Responsivo e acessibilidade ===== */
+@media (max-width:860px) {
+  nav a:not(.btn) { display:none; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  * {
+    animation:none!important;
+    transition:none!important;
+  }
+
+  .js .rev {
+    opacity:1;
+    transform:none;
+  }
+}
